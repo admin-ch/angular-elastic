@@ -136,10 +136,10 @@ angular.module('monospaced.elastic', [])
 
               taHeight = ta.style.height === '' ? 'auto' : parseInt(ta.style.height, 10);
 
-              taComputedStyleWidth = getComputedStyle(ta).getPropertyValue('width');
+              // get the width of the current text area
+              taComputedStyleWidth =  ta.clientWidth;
 
-              // ensure getComputedStyle has returned a readable 'used value' pixel width
-              if (taComputedStyleWidth.substr(taComputedStyleWidth.length - 2, 2) === 'px') {
+              if (taComputedStyleWidth > 0) {
                 // update mirror width in case the textarea width has changed
                 width = parseInt(taComputedStyleWidth, 10) - boxOuter.width;
                 mirror.style.width = width + 'px';
