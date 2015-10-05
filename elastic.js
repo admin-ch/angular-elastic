@@ -80,7 +80,11 @@ angular.module('monospaced.elastic', [])
                            'line-height',
                            'text-transform',
                            'word-spacing',
-                           'text-indent'];
+                           'text-indent',
+                           'padding-right',
+                           'padding-bottom',
+                           'padding-top',
+                           'padding-left'];
 
           // exit if elastic already applied (or is the mirror element)
           if ($ta.data('elastic')) {
