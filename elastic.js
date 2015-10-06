@@ -141,7 +141,7 @@ angular.module('monospaced.elastic', [])
               taHeight = ta.style.height === '' ? 'auto' : parseInt(ta.style.height, 10);
 
               // get the width of the current text area
-              taComputedStyleWidth =  ta.clientWidth;
+              taComputedStyleWidth =  ta.offsetWidth;
 
               if (taComputedStyleWidth > 0) {
                 // update mirror width in case the textarea width has changed
