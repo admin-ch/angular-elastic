@@ -86,11 +86,7 @@ angular.module('monospaced.elastic', [])
                            'line-height',
                            'text-transform',
                            'word-spacing',
-                           'text-indent',
-                           'padding-right',
-                           'padding-bottom',
-                           'padding-top',
-                           'padding-left'];
+                           'text-indent'];
 
           // exit if elastic already applied (or is the mirror element)
           if ($ta.data('elastic')) {
@@ -159,11 +155,13 @@ angular.module('monospaced.elastic', [])
 
               if (mirrorHeight > maxHeight) {
                 mirrorHeight = maxHeight;
-                overflow = 'scroll';
               } else if (mirrorHeight < minHeight) {
                 mirrorHeight = minHeight;
               }
               mirrorHeight += boxOuter.height;
+              if (mirrorHeight > maxHeight) {
+                overflow = 'scroll';
+              }
               ta.style.overflowY = overflow || 'hidden';
 
               if (taHeight !== mirrorHeight) {
