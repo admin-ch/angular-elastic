@@ -1,8 +1,14 @@
 /*
- * angular-elastic v2.4.2
+ * angular-elastic v2.5.1
  * (c) 2014 Monospaced http://monospaced.com
  * License: MIT
  */
+
+if (typeof module !== 'undefined' &&
+    typeof exports !== 'undefined' &&
+    module.exports === exports){
+  module.exports = 'monospaced.elastic';
+}
 
 angular.module('monospaced.elastic', [])
 
@@ -161,14 +167,14 @@ angular.module('monospaced.elastic', [])
               ta.style.overflowY = overflow || 'hidden';
 
               if (taHeight !== mirrorHeight) {
+                scope.$emit('elastic:resize', $ta, taHeight, mirrorHeight);
                 ta.style.height = mirrorHeight + 'px';
-                scope.$emit('elastic:resize', $ta);
               }
 
               // small delay to prevent an infinite loop
               $timeout(function() {
                 active = false;
-              }, 1);
+              }, 1, false);
 
             }
           }
@@ -203,7 +209,7 @@ angular.module('monospaced.elastic', [])
             forceAdjust();
           });
 
-          $timeout(adjust);
+          $timeout(adjust, 0, false);
 
           /*
            * destroy
